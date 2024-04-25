@@ -19,8 +19,10 @@ const app = express();
 const db=require('./db'); 
 //importing the db.js file to establish connection between node server and data base server
 
+require('dotenv').config();
 const bodyParser=require('body-parser');
 app.use(bodyParser.json()); // it will save the data in (req.body) we'll just neeed to use that.
+const PORT=process.env.PORT || 3000;
 
 
 
@@ -36,6 +38,6 @@ const personRouter=require('./routes/personRouter');
 app.use('/person',personRouter);
 
 
-app.listen(3000, ()=>{
+app.listen(PORT, ()=>{
     console.log("server is listening!")
 })
